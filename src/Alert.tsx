@@ -9,8 +9,11 @@ type Props = {
 };
 
 // ici type a une valeur par defaut (information)
+// l'objet props est destructure ici
 export function Alert({ type = 'information', heading, children, closable, onClose }: Props) {
-  const [visible, setVisible] = useState(true);
+  // inference de type: ts devine le type des variables grace
+  // au type de retour des fonctions
+  const [visible, setVisible] = useState<boolean>(true);
 
   if (!visible) {
     return null;
@@ -32,6 +35,7 @@ export function Alert({ type = 'information', heading, children, closable, onClo
         </span>
         <span>{heading}</span>
       </div>
+
       {closable && (
         <button aria-label="Close" onClick={handleCloseClick}>
           <span role="img" aria-label="Close">
